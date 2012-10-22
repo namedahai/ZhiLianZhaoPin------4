@@ -7,7 +7,6 @@
 //
 
 #import "ZhaoPinAppDelegate.h"
-
 @implementation ZhaoPinAppDelegate
 
 @synthesize window = _window;
@@ -23,6 +22,19 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    LoginViewController *myZhiLianViewController = [[LoginViewController alloc]init];
+    UINavigationController *myzlNavigationController = [[UINavigationController alloc]initWithRootViewController:myZhiLianViewController];
+    [myzlNavigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbar_bg.png"] forBarMetrics:UIBarMetricsDefault];
+  
+    
+    
+    UITabBarController *tab = [[UITabBarController alloc]init];
+    tab.viewControllers = [NSArray arrayWithObject:myzlNavigationController];//rootViewController = LoginViewController
+    self.window.rootViewController = tab;
+    [myZhiLianViewController release];
+    [myzlNavigationController release];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
